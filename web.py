@@ -14,9 +14,10 @@ df = pd.read_csv(file_path)
 df = df[df['e'] == 'Heru'].reset_index(drop=True)
 
 # Mencari jumlah data yang kosong pada kolom "Tujuan paper"
-empty_data_count = df[df['e'] == 'Heru']['Tujuan paper'].isnull().sum()
+kolom_PIC = "PIC"
+empty_data_count = df[df[kolom_PIC] == 'Heru']['Tujuan paper'].isnull().sum()
 
-non_empty_data_count = df[df['e'] == 'Heru']['Tujuan paper'].count()
+non_empty_data_count = df[df[kolom_PIC] == 'Heru']['Tujuan paper'].count()
 
 st.set_page_config(
     page_title="Progress Penelitian Heru Triana"
