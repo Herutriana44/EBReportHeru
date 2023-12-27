@@ -20,10 +20,8 @@ selected_pic = st.selectbox("Pilih PIC:", pic_values)
 # Filter DataFrame berdasarkan nilai yang dipilih dari dropdown
 filtered_df = df[df["PIC"] == selected_pic].reset_index(drop=True)
 
-# Mencari jumlah data yang kosong pada kolom "Tujuan paper"
-empty_data_count = df[df[kolom_PIC] == 'Heru']['Tujuan paper'].isnull().sum()
-
-non_empty_data_count = df[df[kolom_PIC] == 'Heru']['Tujuan paper'].count()
+empty_data_count = filtered_df['Tujuan paper'].isnull().sum()
+non_empty_data_count = filtered_df['Tujuan paper'].count()
 
 st.set_page_config(
     page_title="Progress Penelitian Heru Triana"
