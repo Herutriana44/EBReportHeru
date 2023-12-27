@@ -8,6 +8,10 @@ nav_color = "#018205"
 jumbotron_color = "#73ff77"
 body_color = "#b7f7b9"  # Updated body background color
 
+st.set_page_config(
+    page_title="Progress Penelitian Heru Triana"
+)
+
 file_path = "https://docs.google.com/spreadsheets/d/1XFtZiRM1PoEIj6enN1XAZJBEWU8Be4dJa0pyFtJ5ZGU/gviz/tq?tqx=out:csv&sheet=List%20Paper"
 data_path = "https://docs.google.com/spreadsheets/d/1XFtZiRM1PoEIj6enN1XAZJBEWU8Be4dJa0pyFtJ5ZGU/gviz/tq?tqx=out:csv&sheet=Patient"
 df = pd.read_csv(file_path)
@@ -22,10 +26,6 @@ filtered_df = df[df["PIC"] == selected_pic].reset_index(drop=True)
 
 empty_data_count = filtered_df['Tujuan paper'].isnull().sum()
 non_empty_data_count = filtered_df['Tujuan paper'].count()
-
-st.set_page_config(
-    page_title="Progress Penelitian Heru Triana"
-)
 
 # Menampilkan jumlah data yang kosong
 st.markdown(f"""
