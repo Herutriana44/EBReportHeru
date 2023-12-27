@@ -11,8 +11,14 @@ body_color = "#b7f7b9"  # Updated body background color
 file_path = "https://docs.google.com/spreadsheets/d/1XFtZiRM1PoEIj6enN1XAZJBEWU8Be4dJa0pyFtJ5ZGU/gviz/tq?tqx=out:csv&sheet=List%20Paper"
 data_path = "https://docs.google.com/spreadsheets/d/1XFtZiRM1PoEIj6enN1XAZJBEWU8Be4dJa0pyFtJ5ZGU/gviz/tq?tqx=out:csv&sheet=Patient"
 df = pd.read_csv(file_path)
-kolom_PIC = "PIC"
-df = df[df[kolom_PIC] == 'Heru'].reset_index(drop=True)
+# Mendapatkan nilai unik dari kolom "PIC"
+pic_values = df["PIC"].unique()
+
+# Menambahkan dropdown berdasarkan nilai kolom "PIC"
+selected_pic = st.selectbox("Pilih PIC:", pic_values)
+
+# Filter DataFrame berdasarkan nilai yang dipilih dari dropdown
+filtered_df = df[df[kolom_PIC] == selected_pic].reset_index(drop=True)
 
 # Mencari jumlah data yang kosong pada kolom "Tujuan paper"
 empty_data_count = df[df[kolom_PIC] == 'Heru']['Tujuan paper'].isnull().sum()
