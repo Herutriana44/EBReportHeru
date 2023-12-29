@@ -27,6 +27,8 @@ filtered_df = df[df["PIC"] == selected_pic].reset_index(drop=True)
 empty_data_count = filtered_df['Tujuan paper'].isnull().sum()
 non_empty_data_count = filtered_df['Tujuan paper'].count()
 
+jumlah_data = empty_data_count+non_empty_data_count
+
 # Menampilkan jumlah data yang kosong
 st.markdown(f"""
     
@@ -59,8 +61,8 @@ st.markdown(
     f"""
     <div id="jumbotron" class="jumbotron">
         <h1>Progress Penelitian Meta Analisis Epidermolysis Bullosa - Heru Triana</h1>
-        <h4>jumlah paper yang belum dibaca {empty_data_count} dari total {len(df)} paper</h4>
-        <h4>Jumlah paper yang sudah dibaca: {non_empty_data_count} dari total {len(df)} paper</h4>
+        <h4>jumlah paper yang belum dibaca {empty_data_count} dari total {jumlah_data} paper</h4>
+        <h4>Jumlah paper yang sudah dibaca: {non_empty_data_count} dari total {jumlah_data} paper</h4>
         <a href="{file_path}" class="btn btn-primary" style='text-decoration: none;'>
             Link Download list paper yang dibaca
          </a>
